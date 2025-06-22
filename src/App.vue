@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-  //
+  import '@/styles/variables.scss'
 </script>

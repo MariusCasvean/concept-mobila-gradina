@@ -1,11 +1,21 @@
+<script lang="ts" setup>
+
+</script>
+
 <template>
-  <v-main>
+  <Header />
+
+  <v-main class="main-content">
     <router-view />
   </v-main>
 
-  <AppFooter />
+  <Footer />
 </template>
 
-<script lang="ts" setup>
-  //
-</script>
+<style lang="scss">
+.main-content {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+  border: 3px solid red;
+}
+</style>
