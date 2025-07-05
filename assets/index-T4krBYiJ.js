@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{ae as o,af as t}from"./index-B64ssYc7.js";const c={},r={class:"about"};function s(n,a){return t(),o("div",r," Despre noi ")}const i=e(c,[["render",s]]);export{i as default};
