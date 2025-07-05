@@ -1,6 +1,10 @@
 <script lang="ts" setup>
-  import { BASE_URL, PAGE_TITLE } from '../helpers/constants'
+  import { ICON_MENU, PAGE_TITLE } from '../helpers/constants'
 
+
+function toggleMenu() {
+    console.log('Menu toggled')
+  }
 </script>
 
 <template>
@@ -9,7 +13,14 @@
       <a href="/">
         <img alt="Logo" src="../assets/logo_new.png">
       </a>
-      {{ PAGE_TITLE }} - {{ BASE_URL }}
+      {{ PAGE_TITLE }}
+    </div>
+    <div class="header__menu_mobile">
+      <v-icon :icon="ICON_MENU" size="x-large" @click="toggleMenu" />
+      <!-- <v-btn to="/" variant="text">Acasă mobile</v-btn> -->
+      <!-- <v-btn to="/about" variant="text">Despre noi mo</v-btn>
+      <v-btn to="/contact" variant="text">Contact mo</v-btn> -->
+      <!-- <v-btn to="/product/1" color="primary" variant="text">Product Details</v-btn> -->
     </div>
     <div class="header__menu">
       <v-btn to="/" variant="text">Acasă</v-btn>
@@ -28,8 +39,11 @@
   align-items: center;
   width: 100%;
   height: 80px;
-  padding: 0 40px;
+  padding: 0 20px;
   background-color: var(--primary-color);
+  // background-image: url('../assets/images/header/3.png');
+  // background-size: cover;
+  // background-position: center;
 
   &__logo {
     display: flex;
@@ -46,8 +60,27 @@
     }
   }
 
+  &__menu_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
   &__menu {
-    border: 1px solid red;
+    display: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    &__menu_mobile {
+      display: none;
+    }
+
+    &__menu {
+      display: flex;
+      flex-direction: row;
+    }
   }
 }
 </style>

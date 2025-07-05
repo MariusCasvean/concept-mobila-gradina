@@ -1,0 +1,37 @@
+:root {
+  // Colors
+  --primary-color: #a5521f;
+  --secondary-color: #f17f39;
+  --tertiary-color: #f2b705;
+
+  --primary-text-color: #f8e7e7;
+  --secondary-text-color: #17c2ae;
+  --background-color: #ffffff;
+  --accent-color: #ff4081;
+  --border-color: #cccccc;
+  --error-color: #ff4d4d;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --info-color: #2196f3;
+  --link-color: #1e88e5;
+  --link-hover-color: #1565c0;
+
+  // Borders
+  --border-radius-sm: 4px;
+  --border-radius: 6px;
+  --border-radius-lg: 8px;
+
+  // Fonts
+  --font-size-sm: 14px;
+  --font-size: 16px;
+  --font-size-lg: 18px;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  // Opacity
+  --opacity-none: 0;
+  --opacity-hover: 0.5;
+  --opacity-disabled: 0.35;
+  --opacity-full: 1;
+}

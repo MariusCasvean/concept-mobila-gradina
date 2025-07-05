@@ -7,3 +7,11 @@
 <script lang="ts" setup>
   import '@/styles/variables.scss'
 </script>
+
+<style lang="scss">
+body {
+  * {
+    color: var(--primary-text-color);
+  }
+}
+</style>

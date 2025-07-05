@@ -4,7 +4,7 @@
 
 <template>
   <div class="about">
-    ABOUT
+    Despre noi
   </div>
 </template>
 
