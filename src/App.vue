@@ -11,7 +11,7 @@
 <style lang="scss">
 body {
   * {
-    color: var(--primary-text-color);
+    // color: var(--primary-text-color);
   }
 }
 </style>

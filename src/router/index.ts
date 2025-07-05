@@ -5,8 +5,8 @@
  */
 
 // Composables
-import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
+import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
@@ -31,6 +31,11 @@ router.onError((err, to) => {
 
 router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
+})
+
+// Scroll to top on every route change
+router.afterEach(() => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 })
 
 export default router

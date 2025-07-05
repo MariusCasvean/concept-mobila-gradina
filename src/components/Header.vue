@@ -1,10 +1,29 @@
 <script lang="ts" setup>
-  import { ICON_MENU, PAGE_TITLE } from '../helpers/constants'
+import { ICON_CLOSE, ICON_MENU, PAGE_TITLE } from '../helpers/constants'
 
+const mobileMenuOpen = ref(false)
 
 function toggleMenu() {
-    console.log('Menu toggled')
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+function closeMenu() {
+  mobileMenuOpen.value = false
+}
+
+function handleScroll() {
+  if (mobileMenuOpen.value) {
+    closeMenu()
   }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
@@ -13,20 +32,37 @@ function toggleMenu() {
       <a href="/">
         <img alt="Logo" src="../assets/logo_new.png">
       </a>
-      {{ PAGE_TITLE }}
+      <span class="header__logo-title">
+        {{ PAGE_TITLE }}
+      </span>
     </div>
     <div class="header__menu_mobile">
-      <v-icon :icon="ICON_MENU" size="x-large" @click="toggleMenu" />
-      <!-- <v-btn to="/" variant="text">Acasă mobile</v-btn> -->
-      <!-- <v-btn to="/about" variant="text">Despre noi mo</v-btn>
-      <v-btn to="/contact" variant="text">Contact mo</v-btn> -->
-      <!-- <v-btn to="/product/1" color="primary" variant="text">Product Details</v-btn> -->
+      <div class="header_menu_trigger" @click="toggleMenu">
+        <v-icon :icon="ICON_MENU" size="x-large" />
+        <p>Meniu</p>
+      </div>
+      <v-navigation-drawer
+        v-model="mobileMenuOpen"
+        location="right"
+        class="header__drawer"
+        @click:outside="closeMenu"
+      >
+        <div class="drawer__close-btn">
+          <v-btn icon @click="closeMenu">
+            <v-icon :icon="ICON_CLOSE" />
+          </v-btn>
+        </div>
+        <div class="menu-list">
+          <v-btn to="/" variant="text">Acasă</v-btn>
+          <v-btn to="/about" variant="text">Despre noi</v-btn>
+          <v-btn to="/contact" variant="text">Contact</v-btn>
+        </div>
+      </v-navigation-drawer>
     </div>
     <div class="header__menu">
       <v-btn to="/" variant="text">Acasă</v-btn>
       <v-btn to="/about" variant="text">Despre noi</v-btn>
       <v-btn to="/contact" variant="text">Contact</v-btn>
-      <!-- <v-btn to="/product/1" color="primary" variant="text">Product Details</v-btn> -->
     </div>
   </div>
 </template>
@@ -37,6 +73,9 @@ function toggleMenu() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 100;
   width: 100%;
   height: 80px;
   padding: 0 20px;
@@ -55,6 +94,10 @@ function toggleMenu() {
       margin-right: 20px;
     }
 
+    &-title {
+      font-size: 1rem;
+    }
+
     &:hover {
       cursor: pointer;
     }
@@ -70,6 +113,10 @@ function toggleMenu() {
 
   &__menu {
     display: none;
+
+    .v-btn {
+      margin-right: 1rem;
+    }
   }
 
   @media only screen and (min-width: 768px) {
@@ -81,6 +128,38 @@ function toggleMenu() {
       display: flex;
       flex-direction: row;
     }
+
+    &__logo {
+      &-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    }
+  }
+}
+
+.header_menu_trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header__drawer {
+  .drawer__close-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 80px;
+    background: var(--primary-color);
+  }
+
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
   }
 }
 </style>

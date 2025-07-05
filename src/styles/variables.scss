@@ -5,14 +5,17 @@
   --tertiary-color: #f2b705;
 
   --primary-text-color: #f8e7e7;
-  --secondary-text-color: #17c2ae;
+  --secondary-text-color: #f5c9b4;
+
   --background-color: #ffffff;
   --accent-color: #ff4081;
   --border-color: #cccccc;
-  --error-color: #ff4d4d;
+
   --success-color: #4caf50;
-  --warning-color: #ff9800;
   --info-color: #2196f3;
+  --warning-color: #ff9800;
+  --error-color: #ff4d4d;
+
   --link-color: #1e88e5;
   --link-hover-color: #1565c0;
 
@@ -20,6 +23,7 @@
   --border-radius-sm: 4px;
   --border-radius: 6px;
   --border-radius-lg: 8px;
+  --border-radius-top: 8px 8px 0 0;
 
   // Fonts
   --font-size-sm: 14px;
