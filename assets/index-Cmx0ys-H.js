@@ -1,0 +1,1 @@
+import{_ as a}from"./index.vue_vue_type_style_index_0_lang-CIYPYoTD.js";import{ac as r,ar as t,ae as n,af as s,b as e,X as _}from"./index-C_oEifH9.js";import"./VCard-vasa9F_j.js";const u=r({__name:"index",setup(c){return(m,p)=>{const o=t("router-view");return s(),n(_,null,[e(a),e(o)],64)}}});export{u as default};

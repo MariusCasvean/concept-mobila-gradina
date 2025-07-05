@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{ae as c,af as t}from"./index-B64ssYc7.js";const o={},n={class:"contact"};function r(s,a){return t(),c("div",n," CONTACT ")}const i=e(o,[["render",r]]);export{i as default};
