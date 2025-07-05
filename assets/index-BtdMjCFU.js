@@ -1,0 +1,1 @@
+import{_ as t}from"./index.vue_vue_type_style_index_0_lang-CB4dHvEw.js";import{a8 as n,ad as r,c as a,o as s,w as e,F as _}from"./index-BOOYhkj5.js";import"./constants-C4nJHiv8.js";const f=n({__name:"index",setup(c){return(m,p)=>{const o=r("router-view");return s(),a(_,null,[e(t),e(o)],64)}}});export{f as default};

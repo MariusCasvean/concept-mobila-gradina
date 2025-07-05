@@ -1,1 +1,0 @@
-import{_ as r}from"./index.vue_vue_type_style_index_0_lang-D9eQshHo.js";import{d as t,r as n,c as a,o as s,e,F as _}from"./index-BwXIL_PF.js";import"./ssrBoot-DRsawuo9.js";const f=t({__name:"index",setup(c){return(m,p)=>{const o=n("router-view");return s(),a(_,null,[e(r),e(o)],64)}}});export{f as default};
