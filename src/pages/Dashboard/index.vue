@@ -66,6 +66,7 @@
         >
           <category-card
             :category="category"
+            class="mb-10"
             :to="`/category/${category.id}`"
             @update-categories="getCategories"
           />
@@ -74,7 +75,7 @@
       <v-progress-circular
         v-else
         indeterminate
-        size="64"
+        size="48"
         width="4"
       />
     </div>
@@ -91,7 +92,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0.6rem;
 
     .section-title {
       font-size: 1.2rem;
@@ -103,7 +104,9 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 3rem;
+      gap: 2rem;
+
+      margin-bottom: 20px;
     }
   }
 }
