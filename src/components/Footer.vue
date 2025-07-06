@@ -3,6 +3,7 @@
   import { ref } from 'vue'
   import {
     ADMIN_PASS,
+    ICON_EMAIL,
     ICON_LOCK,
     ICON_LOCK_OPEN,
     ICON_PHONE,
@@ -65,7 +66,7 @@
         </p>
         <p class="footer-section-description">
           <span class="item"><v-icon :icon="ICON_PHONE" />0759 323 577</span>
-          <!-- <span class="item"><v-icon :icon="ICON_EMAIL" />email@gmail.com</span> -->
+          <span class="item"><v-icon :icon="ICON_EMAIL" />mobiliergradina_art@yahoo.com</span>
         </p>
       </div>
       <div class="footer-section">
@@ -73,8 +74,11 @@
           Social
         </p>
         <p class="footer-section-description">
-          <a href="https://www.facebook.com/fola.claudiueugen?locale=ro_RO" rel="noopener" target="_blank">
-            <img alt="Facebook" class="social" src="@/assets/images/socials/facebook1.jpg" title="Facebook">
+          <a class="social-item" href="https://www.facebook.com/fola.claudiueugen?locale=ro_RO" rel="noopener" target="_blank">
+            <img alt="Facebook" src="@/assets/images/socials/facebook1.jpg" title="Facebook">
+          </a>
+          <a class="social-item" href="mailto:mobiliergradina_art@yahoo.com">
+            <img alt="Email" src="@/assets/images/socials/email1.png" title="Email">
           </a>
         </p>
       </div>
@@ -148,6 +152,10 @@
       .item {
         display: flex;
 
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+
         .v-icon {
           margin-right: 0.5rem;
           color: var(--tertiary-color);
@@ -155,11 +163,17 @@
       }
     }
 
-    .social {
+    .social-item {
       cursor: pointer;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+      margin-right: 1rem;
+
+      img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+      }
+
+      // border: 1px solid red;
     }
   }
 

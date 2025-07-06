@@ -19,7 +19,7 @@
           console.error('Invalid response data:', response.data)
           return
         }
-        state.value.categories = [...mapResponseToData(response.data), ...mapResponseToData(response.data), ...mapResponseToData(response.data), ...mapResponseToData(response.data)]
+        state.value.categories = mapResponseToData(response.data)
       })
       .catch(error => {
         console.error('Error fetching categories:', error)
@@ -29,25 +29,25 @@
       })
   }
 
-  // function addNewCategory () {
-  //   console.log('Add new category clicked')
+  function addNewCategory () {
+    console.log('Add new category clicked')
 
-  //   const category = {
-  //     title: 'Garaje',
-  //     description: 'Garaje de lemn',
-  //     background: '#0000ff',
-  //     addedOn: Date.now(),
-  //     image: 'link',
-  //   }
+    const category = {
+      title: 'Leagane',
+      description: 'leagane pentru soare pei si scaune , pentru gradina, si pentru o maxima relaxare, pentru relaxare',
+      background: '#de00ff',
+      addedOn: Date.now(),
+      image: 'https://c.cdnmp.net/623839381/p/l/7/leagan-de-gradina-lemn-pin-tratat-fsc-215-x-171-x-180-cm~687437.jpg',
+    }
 
-  //   axios.post(URL_CATEGORIES, category)
-  //     .then(() => {
-  //       getCategories() // Refresh the categories list after adding a new one
-  //     })
-  //     .catch(error => {
-  //       console.error('Error on category POST:', error)
-  //     })
-  // }
+    axios.post(URL_CATEGORIES, category)
+      .then(() => {
+        getCategories() // Refresh the categories list after adding a new one
+      })
+      .catch(error => {
+        console.error('Error on category POST:', error)
+      })
+  }
 
   onMounted(() => {
     getCategories()
@@ -56,6 +56,7 @@
 
 <template>
   <div class="dashboard">
+    <ConfirmationDialog />
     <div class="section">
       <p class="section-title">Categorii de produse</p>
       <div v-if="!state.isLoading" class="section-content">
@@ -66,6 +67,7 @@
           <category-card
             :category="category"
             :to="`/category/${category.id}`"
+            @update-categories="getCategories"
           />
         </template>
       </div>
@@ -76,16 +78,14 @@
         width="4"
       />
     </div>
-    <!-- <v-btn @click="addNewCategory">
+    <v-btn class="mt-10" @click="addNewCategory">
       Add new category
-    </v-btn> -->
+    </v-btn>
   </div>
 </template>
 
 <style lang="scss">
 .dashboard {
-  // border: 2px solid yellow;
-
   .section {
     display: flex;
     flex-direction: column;
@@ -94,7 +94,7 @@
     padding: 20px;
 
     .section-title {
-      font-size: 24px;
+      font-size: 1.2rem;
       color: var(--secondary-color);
       margin-bottom: 2rem;
     }
@@ -103,31 +103,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 2rem;
-
-      // Under 768px: 2 cards per row
-      @media (max-width: 767px) {
-        & > * {
-          flex: 1 1 calc(50% - 2rem);
-          max-width: calc(50% - 2rem);
-        }
-      }
-
-      // 768px to 1199px: 4 cards per row
-      @media (min-width: 768px) and (max-width: 1199px) {
-        & > * {
-          flex: 1 1 calc(25% - 2rem);
-          max-width: calc(25% - 2rem);
-        }
-      }
-
-      // 1200px and above: 6 cards per row
-      @media (min-width: 1200px) {
-        & > * {
-          flex: 1 1 calc(16.666% - 2rem);
-          max-width: calc(16.666% - 2rem);
-        }
-      }
+      gap: 3rem;
     }
   }
 }

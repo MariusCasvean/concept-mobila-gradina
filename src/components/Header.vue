@@ -1,29 +1,33 @@
 <script lang="ts" setup>
-import { ICON_CLOSE, ICON_MENU, PAGE_TITLE } from '../helpers/constants'
+  import { useAppStore } from '@/stores/app'
+  import { ICON_CLOSE, ICON_MENU, PAGE_TITLE } from '../helpers/constants'
 
-const mobileMenuOpen = ref(false)
+  const appStore = useAppStore()
+  const { isAdminMode } = storeToRefs(appStore)
 
-function toggleMenu() {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-}
+  const mobileMenuOpen = ref(false)
 
-function closeMenu() {
-  mobileMenuOpen.value = false
-}
-
-function handleScroll() {
-  if (mobileMenuOpen.value) {
-    closeMenu()
+  function toggleMenu () {
+    mobileMenuOpen.value = !mobileMenuOpen.value
   }
-}
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
+  function closeMenu () {
+    mobileMenuOpen.value = false
+  }
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  function handleScroll () {
+    if (mobileMenuOpen.value) {
+      closeMenu()
+    }
+  }
+
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 </script>
 
 <template>
@@ -33,7 +37,8 @@ onUnmounted(() => {
         <img alt="Logo" src="../assets/logo_new.png">
       </a>
       <span class="header__logo-title">
-        {{ PAGE_TITLE }}
+        {{ PAGE_TITLE }}<br>
+        <span v-if="isAdminMode" class="header__logo-title-admin">ADMIN</span>
       </span>
     </div>
     <div class="header__menu_mobile">
@@ -43,8 +48,8 @@ onUnmounted(() => {
       </div>
       <v-navigation-drawer
         v-model="mobileMenuOpen"
-        location="right"
         class="header__drawer"
+        location="right"
         @click:outside="closeMenu"
       >
         <div class="drawer__close-btn">
@@ -98,6 +103,13 @@ onUnmounted(() => {
       font-size: 1rem;
     }
 
+    &-title-admin {
+      font-size: 0.9rem;
+      background-color: var(--success-color);
+      padding: 1px 10px;
+      border-radius: var(--border-radius-lg);
+    }
+
     &:hover {
       cursor: pointer;
     }
@@ -131,9 +143,9 @@ onUnmounted(() => {
 
     &__logo {
       &-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
     }
   }
 }
